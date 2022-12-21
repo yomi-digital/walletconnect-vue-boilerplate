@@ -30,14 +30,11 @@ import SupportIcon from "./icons/IconSupport.vue";
       <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite</a>.
       The recommended IDE setup is
       <a href="https://code.visualstudio.com/" target="_blank">VSCode</a> +
-      <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a
-      >. If you need to test your components and web pages, check out
+      <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>. If you need to test your components
+      and web pages, check out
       <a href="https://www.cypress.io/" target="_blank">Cypress</a> and
-      <a
-        href="https://docs.cypress.io/guides/component-testing/introduction"
-        target="_blank"
-        >Cypress Component Testing</a
-      >.
+      <a href="https://docs.cypress.io/guides/component-testing/introduction" target="_blank">Cypress Component
+        Testing</a>.
 
       <br />
 
@@ -53,15 +50,10 @@ import SupportIcon from "./icons/IconSupport.vue";
       Get official tools and libraries for your project:
       <a target="_blank" href="https://pinia.vuejs.org/">Pinia</a>,
       <a target="_blank" href="https://v3.router.vuejs.org/">Vue Router</a>,
-      <a target="_blank" href="https://vue-test-utils.vuejs.org/"
-        >Vue Test Utils</a
-      >, and
-      <a target="_blank" href="https://github.com/vuejs/devtools"
-        >Vue Dev Tools</a
-      >. If you need more resources, we suggest paying
-      <a target="_blank" href="https://github.com/vuejs/awesome-vue"
-        >Awesome Vue</a
-      >
+      <a target="_blank" href="https://vue-test-utils.vuejs.org/">Vue Test Utils</a>, and
+      <a target="_blank" href="https://github.com/vuejs/devtools">Vue Dev Tools</a>. If you need more resources, we
+      suggest paying
+      <a target="_blank" href="https://github.com/vuejs/awesome-vue">Awesome Vue</a>
       a visit.
     </WelcomeItem>
 
@@ -74,11 +66,8 @@ import SupportIcon from "./icons/IconSupport.vue";
       Got stuck? Ask your question on
       <a target="_blank" href="https://chat.vuejs.org">Vue Land</a>, our
       official Discord server, or
-      <a
-        target="_blank"
-        href="https://stackoverflow.com/questions/tagged/vue.js"
-        >StackOverflow</a
-      >. You should also subscribe to
+      <a target="_blank" href="https://stackoverflow.com/questions/tagged/vue.js">StackOverflow</a>. You should also
+      subscribe to
       <a target="_blank" href="https://news.vuejs.org">our mailing list</a> and
       follow the official
       <a target="_blank" href="https://twitter.com/vuejs">@vuejs</a>
@@ -93,8 +82,7 @@ import SupportIcon from "./icons/IconSupport.vue";
 
       As an independent project, Vue relies on community backing for its
       sustainability. You can help us by
-      <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a
-      >.
+      <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
       <div style="margin-top: 30px">
         <button @click="connect()" style="width: 100%; padding: 10px">
           Connect
@@ -119,30 +107,39 @@ import {
 
 export default {
   name: "wallet-connect",
+  data() {
+    return {
+      web3modal: {}
+    }
+  },
+  mounted() {
+    const app = this
+    const chains = [mainnet, goerli];
+
+    // Wagmi Core Client
+    const { provider } = configureChains(chains, [
+      walletConnectProvider({
+        projectId: "b93437f2799c397d5341d029cc7bbc48",
+      }),
+    ]);
+    const wagmiClient = createClient({
+      autoConnect: true,
+      connectors: modalConnectors({ appName: "web3Modal", chains }),
+      provider,
+    });
+
+    // Web3Modal and Ethereum Client
+    const ethereumClient = new EthereumClient(wagmiClient, chains);
+    app.web3modal = new Web3Modal(
+      { projectId: "b93437f2799c397d5341d029cc7bbc48" },
+      ethereumClient
+    );
+  },
   methods: {
     async connect() {
+      const app = this
       console.log("try init connect");
-      const chains = [mainnet, goerli];
-
-      // Wagmi Core Client
-      const { provider } = configureChains(chains, [
-        walletConnectProvider({
-          projectId: "b93437f2799c397d5341d029cc7bbc48",
-        }),
-      ]);
-      const wagmiClient = createClient({
-        autoConnect: true,
-        connectors: modalConnectors({ appName: "web3Modal", chains }),
-        provider,
-      });
-
-      // Web3Modal and Ethereum Client
-      const ethereumClient = new EthereumClient(wagmiClient, chains);
-      const web3modal = new Web3Modal(
-        { projectId: "b93437f2799c397d5341d029cc7bbc48" },
-        ethereumClient
-      );
-      web3modal.openModal();
+      app.web3modal.openModal();
       console.log("iter finish");
     },
   },
