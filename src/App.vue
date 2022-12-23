@@ -1,11 +1,17 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
   <div id="app">
     <header>
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+      <img
+        alt="Vue logo"
+        class="logo"
+        src="@/assets/logo.svg"
+        width="125"
+        height="125"
+      />
 
       <div class="wrapper">
         <HelloWorld msg="You did it!" />
@@ -20,6 +26,23 @@ import HelloWorld from './components/HelloWorld.vue'
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    themeClass() {
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        return "dark-theme";
+      } else {
+        return "dark-theme";
+      }
+    },
+  },
+};
+</script>
 
 <style scoped>
 header {

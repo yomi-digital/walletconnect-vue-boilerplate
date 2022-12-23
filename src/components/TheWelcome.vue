@@ -13,47 +13,46 @@ import SupportIcon from "./icons/IconSupport.vue";
       <template #icon>
         <DocumentationIcon />
       </template>
-      <template #heading>Documentation</template>
+      <template #heading>Get in started</template>
 
-      Vue’s
-      <a target="_blank" href="https://v2.vuejs.org/">official documentation</a>
-      provides you with all information you need to get started.
+      To use the new version of web3modal first you will need to create your Vue
+      project using vite.<br /><br />
+      Initialize your project using the npm terminal command<br />
+      <code>npm create vue@3</code> or <code>npm create vue@2</code><br />
+      You will be able to use Vue2 or Vue3 indifferently.
     </WelcomeItem>
 
     <WelcomeItem>
       <template #icon>
         <ToolingIcon />
       </template>
-      <template #heading>Tooling</template>
+      <template #heading>Add Packages</template>
 
-      This project is served and bundled with
-      <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite</a>.
-      The recommended IDE setup is
-      <a href="https://code.visualstudio.com/" target="_blank">VSCode</a> +
-      <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>. If you need to test your components
-      and web pages, check out
-      <a href="https://www.cypress.io/" target="_blank">Cypress</a> and
-      <a href="https://docs.cypress.io/guides/component-testing/introduction" target="_blank">Cypress Component
-        Testing</a>.
-
-      <br />
-
-      More instructions are available in <code>README.md</code>.
+      After creating your project you will need to install the components
+      necessary for <code>web3modal</code> to work.<br /><br />
+      run this command from the terminal:<br />
+      <b-tabs position="is-left" class="block">
+        <b-tab-item label="yarn">
+          <code
+            >yarn add @web3modal/ethereum @web3modal/html @wagmi/core
+            ethers</code
+          ></b-tab-item
+        >
+        <b-tab-item label="npm">
+          <code
+            >npm install @web3modal/ethereum @web3modal/html @wagmi/core
+            ethers</code
+          ></b-tab-item
+        >
+      </b-tabs>
     </WelcomeItem>
 
     <WelcomeItem>
       <template #icon>
         <EcosystemIcon />
       </template>
-      <template #heading>Ecosystem</template>
+      <template #heading>Import</template>
 
-      Get official tools and libraries for your project:
-      <a target="_blank" href="https://pinia.vuejs.org/">Pinia</a>,
-      <a target="_blank" href="https://v3.router.vuejs.org/">Vue Router</a>,
-      <a target="_blank" href="https://vue-test-utils.vuejs.org/">Vue Test Utils</a>, and
-      <a target="_blank" href="https://github.com/vuejs/devtools">Vue Dev Tools</a>. If you need more resources, we
-      suggest paying
-      <a target="_blank" href="https://github.com/vuejs/awesome-vue">Awesome Vue</a>
       a visit.
     </WelcomeItem>
 
@@ -66,8 +65,11 @@ import SupportIcon from "./icons/IconSupport.vue";
       Got stuck? Ask your question on
       <a target="_blank" href="https://chat.vuejs.org">Vue Land</a>, our
       official Discord server, or
-      <a target="_blank" href="https://stackoverflow.com/questions/tagged/vue.js">StackOverflow</a>. You should also
-      subscribe to
+      <a
+        target="_blank"
+        href="https://stackoverflow.com/questions/tagged/vue.js"
+        >StackOverflow</a
+      >. You should also subscribe to
       <a target="_blank" href="https://news.vuejs.org">our mailing list</a> and
       follow the official
       <a target="_blank" href="https://twitter.com/vuejs">@vuejs</a>
@@ -82,7 +84,8 @@ import SupportIcon from "./icons/IconSupport.vue";
 
       As an independent project, Vue relies on community backing for its
       sustainability. You can help us by
-      <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
+      <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a
+      >.
       <div style="margin-top: 30px">
         <button @click="connect()" style="width: 100%; padding: 10px">
           Connect
@@ -109,11 +112,11 @@ export default {
   name: "wallet-connect",
   data() {
     return {
-      web3modal: {}
-    }
+      web3modal: {},
+    };
   },
   mounted() {
-    const app = this
+    const app = this;
     const chains = [mainnet, goerli];
 
     // Wagmi Core Client
@@ -137,7 +140,7 @@ export default {
   },
   methods: {
     async connect() {
-      const app = this
+      const app = this;
       console.log("try init connect");
       app.web3modal.openModal();
       console.log("iter finish");
