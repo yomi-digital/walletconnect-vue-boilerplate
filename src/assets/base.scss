@@ -22,7 +22,6 @@
 }
 
 /* semantic color variables for this project */
-
 :root {
   --color-background: var(--vt-c-black);
   --color-background-soft: var(--vt-c-black-soft);
@@ -33,6 +32,8 @@
 
   --color-heading: var(--vt-c-text-dark-1);
   --color-text: var(--vt-c-text-dark-2);
+
+  --section-gap: 80px;
 }
 
 *,
@@ -57,4 +58,71 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper-page {
+  padding: 1.5rem 0;
+}
+
+.fixed-pos {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  padding: 0 20px;
+  width: auto;
+  max-width: 35%;
+}
+
+code {
+  background-color: #282a36;
+  color: white;
+  font-size: 0.875em;
+  font-weight: normal;
+  border-radius: 6px;
+  padding: 0.25em 0.5em 0.25em;
+}
+
+a:hover {
+  background-color: black !important;
+}
+
+pre[class*="language-"] {
+  transition: all 0.5s;
+  &:hover {
+    .top-right {
+      opacity: 1 !important;
+    }
+  }
+}
+
+.top-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: all 0.5s;
+  opacity: 0;
+  &:hover {
+    color: white;
+    border: 1px solid white;
+  }
+}
+
+.top-right-center {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translate(0, -50%);
+  transition: all 0.5s;
+  opacity: 0;
+  &:hover {
+    color: white;
+    border: 1px solid white;
+  }
+}
+
+.btn-icon {
+  background-color: transparent;
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
 }

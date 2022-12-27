@@ -1,9 +1,10 @@
 <template>
   <main>
-    <TheWelcome />
+    <Guide />
   </main>
 </template>
 
 <script setup>
-import TheWelcome from "@/components/TheWelcome.vue";
+import Guide from "@/components/Guide.vue";
 </script>
+

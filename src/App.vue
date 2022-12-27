@@ -1,25 +1,20 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
+import WalletConnect from "./components/WalletConnect.vue";
 </script>
 
 <template>
   <div id="app">
     <header>
-      <img
-        alt="Vue logo"
-        class="logo"
-        src="@/assets/logo.svg"
-        width="125"
-        height="125"
-      />
+      <div class="px-6" :class="{ 'fixed-pos': isLG || isXL }">
+        <img
+          src="https://yomi.fra1.digitaloceanspaces.com/logo_white.png"
+          width="200"
+          style="color: var(--textColor); font-size: 14px"
+        />
 
-      <div class="wrapper">
-        <HelloWorld msg="You did it!" />
-
-        <nav>
-          <router-link to="/">Home</router-link>
-          <router-link to="/about">About</router-link>
-        </nav>
+        <div class="wrapper">
+          <WalletConnect />
+        </div>
       </div>
     </header>
 
@@ -28,7 +23,10 @@ import HelloWorld from "./components/HelloWorld.vue";
 </template>
 
 <script>
+import checkViewport from "@/mixins/checkViewport";
+
 export default {
+  mixins: [checkViewport],
   computed: {
     themeClass() {
       if (
