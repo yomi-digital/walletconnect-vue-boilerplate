@@ -14,14 +14,15 @@ import CodeIcon from "./icons/IconCoding.vue";
         <DocumentationIcon />
       </template>
       <template #heading>Get in started</template>
-
-      <p>
-        To use the new version of web3modal first you will need to create your
-        Vue project using vite.<br /><br />
-        Initialize your project using the npm terminal command<br />
-        <code>npm create vue@3</code> or <code>npm create vue@2</code><br />
-        You will be able to use Vue2 or Vue3 indifferently.
-      </p>
+      <div :style="[isSM ? { width: '89%' } : {}]">
+        <p>
+          To use the new version of web3modal first you will need to create your
+          Vue project using vite.<br /><br />
+          Initialize your project using the npm terminal command<br />
+          <code>npm create vue@3</code> or <code>npm create vue@2</code><br />
+          You will be able to use Vue2 or Vue3 indifferently.
+        </p>
+      </div>
     </GuideItem>
 
     <GuideItem>
@@ -29,12 +30,14 @@ import CodeIcon from "./icons/IconCoding.vue";
         <ToolingIcon />
       </template>
       <template #heading>Add Packages</template>
-      <p>
-        After creating your project you will need to install the components
-        <br v-if="isSM" />
-        necessary for <code>web3modal</code> to work.<br />
-        Run this command from the terminal:<br />
-      </p>
+      <div :style="[isSM ? { width: '89%' } : {}]">
+        <p>
+          After creating your project you will need to install the components
+          necessary <br v-if="isSM" />
+          for <code>web3modal</code> to work.<br />
+          Run this command from the terminal:<br />
+        </p>
+      </div>
       <b-tabs position="is-left" class="block mt-4">
         <b-tab-item label="yarn">
           <pre
@@ -56,11 +59,13 @@ import CodeIcon from "./icons/IconCoding.vue";
         <EcosystemIcon />
       </template>
       <template #heading>Import</template>
-      <p>
-        After installing the necessary packages, import them into your
-        component<br v-if="isSM" />
-        <em>(ex: MyComponent.vue)</em>
-      </p>
+      <div :style="[isSM ? { width: '89%' } : {}]">
+        <p>
+          After installing the necessary packages, import them into your
+          component
+          <em>(ex: MyComponent.vue)</em>
+        </p>
+      </div>
       <br v-if="isSM" />
       <pre
         class="language-js"
@@ -82,14 +87,12 @@ import {
         <CodeIcon />
       </template>
       <template #heading>Configure</template>
-      <div :class="{ 'pr-6': isSM }">
+      <div :style="[isSM ? { width: '89%' } : {}]">
         <p>
           Once you have imported the components, you will need to create a
-          function <br v-if="isSM" />
-          to inject and prepare the environment for WalletConnect. To do this
-          you will <br v-if="isSM" />
-          need to create such a function and put it in the mounted() as in the
-          example.
+          function to inject and prepare the environment for WalletConnect. To
+          do this you will need to create such a function and put it in the
+          mounted() as in the example.
         </p>
         <br v-if="isSM" />
       </div>
