@@ -23,10 +23,16 @@
         <a href="https://yomi.digital" target="blank">YOMI</a>
       </p>
       <p>
-        Wallet Connect - 
+        Wallet Connect -
         <a href="https://docs.walletconnect.com/2.0/" target="blank">docs</a>
       </p>
       <div class="mt-4 is-flex is-align-items-center is-justify-content-center">
+        <a
+          href="https://github.com/yomi-digital/walletconnect-vue-boilerplate"
+          target="_blank"
+          class="mr-3"
+          ><i class="fa-brands fa-github"></i
+        ></a>
         <a href="https://twitter.com/YOMI_WEB3" target="_blank" class="mr-3"
           ><i class="fa-brands fa-twitter"></i
         ></a>

@@ -12,9 +12,9 @@ export default {
   },
   methods: {
     checkViewport() {
-      console.log("init Function viewport");
+      // console.log("init Function viewport");
+      // console.log(window.innerWidth);
       const app = this;
-      console.log(window.innerWidth);
       if (window.innerWidth < 981) {
         app.isSM = true;
         app.isMD = false;
@@ -60,10 +60,10 @@ export default {
           app.isXL = true;
         }
       });
-      console.log("check mobile", app.isSM);
-      console.log("check tablet", app.isMD);
-      console.log("check desktop", app.isLG);
-      console.log("check widescreen", app.isXL);
+      // console.log("check mobile", app.isSM);
+      // console.log("check tablet", app.isMD);
+      // console.log("check desktop", app.isLG);
+      // console.log("check widescreen", app.isXL);
     },
   },
 };
