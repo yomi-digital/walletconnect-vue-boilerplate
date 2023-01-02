@@ -9,7 +9,7 @@ import CodeIcon from "./icons/IconCoding.vue";
 
 <template>
   <div class="wrapper-page">
-    <GuideItem class="item">
+    <GuideItem>
       <template #icon>
         <DocumentationIcon />
       </template>
@@ -31,8 +31,8 @@ import CodeIcon from "./icons/IconCoding.vue";
       <template #heading>Add Packages</template>
       <p>
         After creating your project you will need to install the components
-        necessary for <br v-if="isSM" />
-        <code>web3modal</code> to work.<br />
+        necessary <br v-if="isSM" />
+        for <code>web3modal</code> to work.<br />
         Run this command from the terminal:<br />
       </p>
       <b-tabs position="is-left" class="block mt-4">
@@ -57,9 +57,11 @@ import CodeIcon from "./icons/IconCoding.vue";
       </template>
       <template #heading>Import</template>
       <p>
-        After installing the necessary packages, import them into your component
+        After installing the necessary packages, import them into your
+        component<br v-if="isSM" />
         <em>(ex: MyComponent.vue)</em>
       </p>
+      <br v-if="isSM" />
       <pre
         class="language-js"
       ><code>import { configureChains, createClient } from "@wagmi/core";
@@ -83,10 +85,13 @@ import {
       <div :class="{ 'pr-6': isSM }">
         <p>
           Once you have imported the components, you will need to create a
-          function to inject and prepare the environment for WalletConnect. To
-          do this you will need to create such a <br v-if="isSM" />
-          function and put it in the mounted() as in the example.
+          function to inject and prepare the environment for WalletConnect.
+          <br v-if="isSM" /><br v-if="isSM" />
+          To do this you will need to create such a function and put it in the
+          mounted() <br v-if="isSM" />
+          as in the example.
         </p>
+        <br v-if="isSM" />
       </div>
       <pre class="language-js"><code>export default {
   name: "wallet-connect",
@@ -131,6 +136,7 @@ import {
         Finally you will have to create the function to show the modal, like
         this:
       </p>
+      <br v-if="isSM" />
       <pre class="language-js"><code>methods: {
   async connect() {
     const app = this;
