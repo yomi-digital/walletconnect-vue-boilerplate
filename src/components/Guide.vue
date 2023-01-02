@@ -80,12 +80,12 @@ import {
         <CodeIcon />
       </template>
       <template #heading>Configure</template>
-      <div>
+      <div :class="{ 'pr-6': isSM }">
         <p>
           Once you have imported the components, you will need to create a
           function to inject and prepare the environment for WalletConnect. To
-          do this you will need to create such a function and put it in the
-          mounted() as in the example.
+          do this you will need to create such a <br v-if="isSM" />
+          function and put it in the mounted() as in the example.
         </p>
       </div>
       <pre class="language-js"><code>export default {
