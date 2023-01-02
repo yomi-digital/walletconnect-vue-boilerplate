@@ -4,6 +4,9 @@
     <h3 class="mt-4">
       This is a guide to integrating WalletConnect into a Vue JS project.
     </h3>
+    <h3 class="mt-3">
+      Try the new wallet connect by clicking on the button below
+    </h3>
 
     <div class="mt-5">
       <b-button

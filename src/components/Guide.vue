@@ -29,9 +29,9 @@ import CodeIcon from "./icons/IconCoding.vue";
       <template #heading>Add Packages</template>
 
       After creating your project you will need to install the components
-      necessary for <code>web3modal</code> to work.<br /><br />
+      necessary for <code>web3modal</code> to work.<br />
       Run this command from the terminal:<br />
-      <b-tabs position="is-left" class="block">
+      <b-tabs position="is-left" class="block mt-4">
         <b-tab-item label="yarn">
           <pre
             class="language-sh"
@@ -41,7 +41,7 @@ import CodeIcon from "./icons/IconCoding.vue";
         <b-tab-item label="npm">
           <pre
             class="language-sh"
-          ><code>npm install @web3modal/ethereum @web3modal/html @wagmi/core ethers        </code
+          ><code>npm install @web3modal/ethereum @web3modal/html @wagmi/core ethers     </code
           ><b-button style="padding:2px 5px; height: auto" v-clipboard:copy="npm" class="top-right-center btn-icon ml-4"><i class="fa-solid fa-copy"></i></b-button></pre>
         </b-tab-item>
       </b-tabs>
@@ -54,9 +54,9 @@ import CodeIcon from "./icons/IconCoding.vue";
       <template #heading>Import</template>
       After installing the necessary packages, import them into your component
       <em>(ex: MyComponent.vue)</em>
-      <pre class="language-js">
-        <code>
-import { configureChains, createClient } from "@wagmi/core";
+      <pre
+        class="language-js"
+      ><code>import { configureChains, createClient } from "@wagmi/core";
 
 import { mainnet, goerly } from "@wagmi/core/chains";
 
@@ -66,10 +66,7 @@ import {
   EthereumClient,
   modalConnectors,
   walletConnectProvider,
-} from "@web3modal/ethereum";
-        </code>
-        <b-button style="padding:2px 5px; height: auto" v-clipboard:copy="importWeb3" class="top-right btn-icon ml-4"><i class="fa-solid fa-copy"></i></b-button>
-      </pre>
+} from "@web3modal/ethereum";</code><b-button style="padding:2px 5px; height: auto" v-clipboard:copy="importWeb3" class="top-right btn-icon ml-4"><i class="fa-solid fa-copy"></i></b-button></pre>
     </GuideItem>
 
     <GuideItem>
@@ -81,9 +78,7 @@ import {
       to inject and prepare the environment for WalletConnect. To do this you
       will need to create such a function and put it in the mounted() as in the
       example.
-      <pre class="language-js">
-        <code>
-export default {
+      <pre class="language-js"><code>export default {
   name: "wallet-connect",
   data() {
     return {
@@ -113,10 +108,7 @@ export default {
       ethereumClient
     );
   },
-};
-</code>
-        <b-button style="padding:2px 5px; height: auto" v-clipboard:copy="codeMounted" class="top-right btn-icon ml-4"><i class="fa-solid fa-copy"></i></b-button>
-      </pre>
+};</code><b-button style="padding:2px 5px; height: auto" v-clipboard:copy="codeMounted" class="top-right btn-icon ml-4"><i class="fa-solid fa-copy"></i></b-button></pre>
     </GuideItem>
 
     <GuideItem>
@@ -126,18 +118,14 @@ export default {
       <template #heading>Usage</template>
 
       Finally you will have to create the function to show the modal, like this:
-      <pre class="language-js">
-        <code>
-methods: {
+      <pre class="language-js"><code>methods: {
   async connect() {
     const app = this;
     console.log("try init connect");
     app.web3modal.openModal();
     console.log("iter finish");
   },
-},
-        </code>
-          <b-button style="padding:2px 5px; height: auto" v-clipboard:copy="codeModal" class="top-right btn-icon ml-4"><i class="fa-solid fa-copy"></i></b-button> </pre>
+},</code><b-button style="padding:2px 5px; height: auto" v-clipboard:copy="codeModal" class="top-right btn-icon ml-4"><i class="fa-solid fa-copy"></i></b-button></pre>
     </GuideItem>
   </div>
 </template>

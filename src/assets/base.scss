@@ -89,8 +89,9 @@ a:hover {
 
 pre[class*="language-"] {
   transition: all 0.5s;
+  border-radius: 6px;
   &:hover {
-    .top-right {
+    .top-right, .top-right-center {
       opacity: 1 !important;
     }
   }
