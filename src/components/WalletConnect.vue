@@ -5,7 +5,7 @@
       This is a guide to integrating WalletConnect into a Vue JS project.
     </h3>
     <h3 class="mt-3">
-      Try the new wallet connect by clicking on the button below
+      Try the new wallet connect by clicking on the button below.
     </h3>
 
     <div class="mt-5">
@@ -21,6 +21,10 @@
       <p class="mt-6">
         Developed with ♥︎ by
         <a href="https://yomi.digital" target="blank">YOMI</a>
+      </p>
+      <p>
+        Wallet Connect - 
+        <a href="https://docs.walletconnect.com/2.0/" target="blank">docs</a>
       </p>
       <div class="mt-4 is-flex is-align-items-center is-justify-content-center">
         <a href="https://twitter.com/YOMI_WEB3" target="_blank" class="mr-3"

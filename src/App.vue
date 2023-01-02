@@ -4,8 +4,14 @@ import WalletConnect from "./components/WalletConnect.vue";
 
 <template>
   <div id="app">
-    <header>
-      <div class="px-6" :class="{ 'fixed-pos': isLG || isXL }">
+    <header style="position: relative">
+      <div
+        class="px-6"
+        :class="{
+          'fixed-pos': !isMD && !isSM,
+          'has-text-centered': !isLG && !isXL,
+        }"
+      >
         <img
           src="https://yomi.fra1.digitaloceanspaces.com/logo_white.png"
           width="200"
@@ -15,6 +21,10 @@ import WalletConnect from "./components/WalletConnect.vue";
         <div class="wrapper">
           <WalletConnect />
         </div>
+      </div>
+      <div v-if="isSM" class="bottom-center has-text-centered">
+        <p>Scroll down to see the guide</p>
+        <span class="material-symbols-outlined mt-2"> arrow_downward </span>
       </div>
     </header>
 

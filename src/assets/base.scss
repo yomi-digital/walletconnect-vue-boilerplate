@@ -1,4 +1,4 @@
-/* color palette from <https://github.com/vuejs/theme> */
+// ====================== MAIN ======================
 :root {
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
@@ -21,7 +21,6 @@
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 }
 
-/* semantic color variables for this project */
 :root {
   --color-background: var(--vt-c-black);
   --color-background-soft: var(--vt-c-black-soft);
@@ -64,6 +63,8 @@ body {
   padding: 1.5rem 0;
 }
 
+// ====================== POSITIONING ======================
+
 .fixed-pos {
   position: fixed;
   top: 50%;
@@ -74,27 +75,11 @@ body {
   max-width: 35%;
 }
 
-code {
-  background-color: #282a36;
-  color: white;
-  font-size: 0.875em;
-  font-weight: normal;
-  border-radius: 6px;
-  padding: 0.25em 0.5em 0.25em;
-}
-
-a:hover {
-  background-color: black !important;
-}
-
-pre[class*="language-"] {
-  transition: all 0.5s;
-  border-radius: 6px;
-  &:hover {
-    .top-right, .top-right-center {
-      opacity: 1 !important;
-    }
-  }
+.bottom-center {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .top-right {
@@ -122,8 +107,55 @@ pre[class*="language-"] {
   }
 }
 
+// ====================== FONTS ======================
+
+code {
+  background-color: #282a36;
+  color: white;
+  font-size: 0.875em;
+  font-weight: normal;
+  border-radius: 6px;
+  padding: 0.25em 0.5em 0.25em;
+}
+
+a:hover {
+  background-color: black !important;
+}
+
+pre[class*="language-"] {
+  transition: all 0.5s;
+  border-radius: 6px;
+  &:hover {
+    .top-right,
+    .top-right-center {
+      opacity: 1 !important;
+    }
+  }
+}
+
+// ====================== ELEMENTS ======================
+
 .btn-icon {
   background-color: transparent;
   border: 1px solid var(--color-text);
   color: var(--color-text);
+}
+
+// ====================== RESPONSIVE ======================
+
+@media screen and (max-width: 980px) {
+  #app {
+    padding: 0 10px !important;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    border-bottom: 2px solid var(--color-text);
+  }
+  pre[class*="language-"] {
+    word-break: break-all;
+  }
 }

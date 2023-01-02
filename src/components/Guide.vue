@@ -131,7 +131,9 @@ import {
 </template>
 
 <script>
+import checkViewport from "@/mixins/checkViewport";
 export default {
+  mixins: [checkViewport],
   data() {
     return {
       yarn: "yarn add @web3modal/ethereum @web3modal/html @wagmi/core ethers",
