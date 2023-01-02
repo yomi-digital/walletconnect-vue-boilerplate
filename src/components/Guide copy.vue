@@ -9,19 +9,17 @@ import CodeIcon from "./icons/IconCoding.vue";
 
 <template>
   <div class="wrapper-page">
-    <GuideItem class="item">
+    <GuideItem>
       <template #icon>
         <DocumentationIcon />
       </template>
       <template #heading>Get in started</template>
 
-      <p>
-        To use the new version of web3modal first you will need to create your
-        Vue project using vite.<br /><br />
-        Initialize your project using the npm terminal command<br />
-        <code>npm create vue@3</code> or <code>npm create vue@2</code><br />
-        You will be able to use Vue2 or Vue3 indifferently.
-      </p>
+      To use the new version of web3modal first you will need to create your Vue
+      project using vite.<br /><br />
+      Initialize your project using the npm terminal command<br />
+      <code>npm create vue@3</code> or <code>npm create vue@2</code><br />
+      You will be able to use Vue2 or Vue3 indifferently.
     </GuideItem>
 
     <GuideItem>
@@ -29,12 +27,10 @@ import CodeIcon from "./icons/IconCoding.vue";
         <ToolingIcon />
       </template>
       <template #heading>Add Packages</template>
-      <p>
-        After creating your project you will need to install the components
-        necessary for <br v-if="isSM" />
-        <code>web3modal</code> to work.<br />
-        Run this command from the terminal:<br />
-      </p>
+
+      After creating your project you will need to install the components
+      necessary for <code>web3modal</code> to work.<br />
+      Run this command from the terminal:<br />
       <b-tabs position="is-left" class="block mt-4">
         <b-tab-item label="yarn">
           <pre
@@ -56,10 +52,8 @@ import CodeIcon from "./icons/IconCoding.vue";
         <EcosystemIcon />
       </template>
       <template #heading>Import</template>
-      <p>
-        After installing the necessary packages, import them into your component
-        <em>(ex: MyComponent.vue)</em>
-      </p>
+      After installing the necessary packages, import them into your component
+      <em>(ex: MyComponent.vue)</em>
       <pre
         class="language-js"
       ><code>import { configureChains, createClient } from "@wagmi/core";
@@ -80,14 +74,10 @@ import {
         <CodeIcon />
       </template>
       <template #heading>Configure</template>
-      <div>
-        <p>
-          Once you have imported the components, you will need to create a
-          function to inject and prepare the environment for WalletConnect. To
-          do this you will need to create such a function and put it in the
-          mounted() as in the example.
-        </p>
-      </div>
+      Once you have imported the components, you will need to create a function
+      to inject and prepare the environment for WalletConnect. To do this you
+      will need to create such a function and put it in the mounted() as in the
+      example.
       <pre class="language-js"><code>export default {
   name: "wallet-connect",
   data() {
@@ -127,10 +117,7 @@ import {
       </template>
       <template #heading>Usage</template>
 
-      <p>
-        Finally you will have to create the function to show the modal, like
-        this:
-      </p>
+      Finally you will have to create the function to show the modal, like this:
       <pre class="language-js"><code>methods: {
   async connect() {
     const app = this;

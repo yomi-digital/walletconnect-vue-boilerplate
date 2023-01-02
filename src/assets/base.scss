@@ -144,6 +144,10 @@ pre[class*="language-"] {
 // ====================== RESPONSIVE ======================
 
 @media screen and (max-width: 980px) {
+  body,
+  html {
+    overflow-x: hidden;
+  }
   #app {
     padding: 0 10px !important;
   }
@@ -155,7 +159,12 @@ pre[class*="language-"] {
     height: 100vh;
     border-bottom: 2px solid var(--color-text);
   }
-  pre[class*="language-"] {
+  h3 {
+    line-height: 1;
+  }
+
+  pre[class*="language-"],
+  code {
     word-break: break-all;
   }
 }
