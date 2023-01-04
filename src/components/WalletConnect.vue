@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { configureChains, createClient, watchAccount } from "@wagmi/core";
+import { configureChains, createClient, watchAccount, getProvider } from "@wagmi/core";
 import { goerli, mainnet } from "@wagmi/core/chains";
 import { Web3Modal } from "@web3modal/html";
 
@@ -83,17 +83,23 @@ export default {
       const app = this;
       app.web3modal.openModal();
     },
+    async readState() {
+      const app = this;
+      const account = app.web3client.getAccount()
+      app.account = account.address
+      const provider = getProvider()
+      console.log("Provider:", provider)
+      const signer = provider.getSigner()
+      console.log("Signer:", signer)
+      const balance = await provider.getBalance(app.account)
+      console.log("Balance:", balance.toString())
+    },
     async connect() {
       const app = this;
       console.log("Try background connection");
-      const account = app.web3client.getAccount()
-      console.log("Account:", account)
-      app.account = account.address
+      app.readState()
       watchAccount((connected) => {
-        console.log("New account connected:", connected)
-        const account = app.web3client.getAccount()
-        console.log(account.address)
-        app.account = account.address
+        app.readState()
       });
     },
   },
