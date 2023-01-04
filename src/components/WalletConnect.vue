@@ -9,10 +9,28 @@
     </h3>
 
     <div class="mt-5">
-      <b-button class="is-primary" @click="openModal()" v-if="!account" style="width: 100%; padding: 10px">
+      <b-button
+        class="is-primary"
+        @click="openModal()"
+        v-if="!account"
+        style="width: 100%; padding: 10px"
+      >
         Connect
       </b-button>
-      <div v-if="account">{{ account }}</div>
+      <div
+        v-if="account !== undefined && account"
+        class="has-text-left box-account mt-6"
+      >
+        <div class="is-flex is-align-items-center">
+          <h4 class="mr-2">
+            <i class="color-success fa-sharp fa-solid fa-circle-check"></i>
+          </h4>
+          <h4 class="color-dark">CONNECTED</h4>
+        </div>
+        <h4 class="color-dark mt-3">
+          {{ account }}
+        </h4>
+      </div>
     </div>
     <div class="has-text-centered">
       <p class="mt-6">
@@ -24,20 +42,39 @@
         <a href="https://docs.walletconnect.com/2.0/" target="blank">docs</a>
       </p>
       <div class="mt-4 is-flex is-align-items-center is-justify-content-center">
-        <a href="https://github.com/yomi-digital/walletconnect-vue-boilerplate" target="_blank" class="mr-3"><i
-            class="fa-brands fa-github"></i></a>
-        <a href="https://twitter.com/YOMI_WEB3" target="_blank" class="mr-3"><i class="fa-brands fa-twitter"></i></a>
-        <a href="https://discord.gg/w54Jbd4Qhz" target="_blank" class="mr-3"><i class="fa-brands fa-discord"></i></a>
-        <a href="https://www.linkedin.com/company/yomidigitalhub/" target="_blank" class="mr-3"><i
-            class="fa-brands fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/yomi_web3/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a
+          href="https://github.com/yomi-digital/walletconnect-vue-boilerplate"
+          target="_blank"
+          class="mr-3"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a href="https://twitter.com/YOMI_WEB3" target="_blank" class="mr-3"
+          ><i class="fa-brands fa-twitter"></i
+        ></a>
+        <a href="https://discord.gg/w54Jbd4Qhz" target="_blank" class="mr-3"
+          ><i class="fa-brands fa-discord"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/company/yomidigitalhub/"
+          target="_blank"
+          class="mr-3"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+        <a href="https://www.instagram.com/yomi_web3/" target="_blank"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { configureChains, createClient, watchAccount, getProvider } from "@wagmi/core";
+import {
+  configureChains,
+  createClient,
+  watchAccount,
+  getProvider,
+} from "@wagmi/core";
 import { goerli, mainnet } from "@wagmi/core/chains";
 import { Web3Modal } from "@web3modal/html";
 
@@ -53,7 +90,8 @@ export default {
     return {
       web3modal: {},
       web3client: {},
-      account: ""
+      account: "",
+      balance: 0,
     };
   },
   mounted() {
@@ -76,7 +114,7 @@ export default {
       { projectId: "b93437f2799c397d5341d029cc7bbc48" },
       app.web3client
     );
-    app.connect()
+    app.connect();
   },
   methods: {
     async openModal() {
@@ -85,55 +123,24 @@ export default {
     },
     async readState() {
       const app = this;
-      const account = app.web3client.getAccount()
-      app.account = account.address
-      const provider = getProvider()
-      console.log("Provider:", provider)
-      const signer = provider.getSigner()
-      console.log("Signer:", signer)
-      const balance = await provider.getBalance(app.account)
-      console.log("Balance:", balance.toString())
+      const account = app.web3client.getAccount();
+      app.account = account.address;
+      const provider = getProvider();
+      console.log("Provider:", provider);
+      const signer = provider.getSigner();
+      console.log("Signer:", signer);
+      const balance = await provider.getBalance(app.account);
+      app.balance = balance;
+      console.log("Balance:", balance.toString());
     },
     async connect() {
       const app = this;
       console.log("Try background connection");
-      app.readState()
+      app.readState();
       watchAccount((connected) => {
-        app.readState()
+        app.readState();
       });
     },
   },
 };
 </script>
-
-<style lang="scss" scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  line-height: 1;
-}
-
-h3 {
-  font-size: 1.2rem;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-
-  .greetings h1,
-  .greetings h3 {
-    display: block;
-    text-align: left;
-  }
-}
-
-a {
-  i {
-    font-size: 1.5rem;
-  }
-}
-</style>
