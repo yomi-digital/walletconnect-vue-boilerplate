@@ -2,7 +2,13 @@
   <div class="greetings">
     <h1 class="green mt-5">Wallet Connect Guide</h1>
     <h3 class="mt-4">
-      This is a guide to integrating WalletConnect into a Vue JS project.
+      This is a guide to integrate WalletConnect 2.0 into a Vue JS project, you
+      can found open source code
+      <a
+        href="https://github.com/yomi-digital/walletconnect-vue-boilerplate"
+        target="_blank"
+        >here</a
+      >.
     </h3>
     <h3 class="mt-3">
       Try the new wallet connect by clicking on the button below.
@@ -28,7 +34,7 @@
           <h4 class="color-dark">CONNECTED</h4>
         </div>
         <h4 class="color-dark mt-3">
-          {{ account }}
+          {{ account.substr(0, 6) + "..." + account.substr(-6) }}
         </h4>
       </div>
     </div>
