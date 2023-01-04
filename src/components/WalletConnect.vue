@@ -9,13 +9,10 @@
     </h3>
 
     <div class="mt-5">
-      <b-button
-        class="is-primary"
-        @click="connect()"
-        style="width: 100%; padding: 10px"
-      >
+      <b-button class="is-primary" @click="openModal()" v-if="!account" style="width: 100%; padding: 10px">
         Connect
       </b-button>
+      <div v-if="account">{{ account }}</div>
     </div>
     <div class="has-text-centered">
       <p class="mt-6">
@@ -27,34 +24,20 @@
         <a href="https://docs.walletconnect.com/2.0/" target="blank">docs</a>
       </p>
       <div class="mt-4 is-flex is-align-items-center is-justify-content-center">
-        <a
-          href="https://github.com/yomi-digital/walletconnect-vue-boilerplate"
-          target="_blank"
-          class="mr-3"
-          ><i class="fa-brands fa-github"></i
-        ></a>
-        <a href="https://twitter.com/YOMI_WEB3" target="_blank" class="mr-3"
-          ><i class="fa-brands fa-twitter"></i
-        ></a>
-        <a href="https://discord.gg/w54Jbd4Qhz" target="_blank" class="mr-3"
-          ><i class="fa-brands fa-discord"></i
-        ></a>
-        <a
-          href="https://www.linkedin.com/company/yomidigitalhub/"
-          target="_blank"
-          class="mr-3"
-          ><i class="fa-brands fa-linkedin"></i
-        ></a>
-        <a href="https://www.instagram.com/yomi_web3/" target="_blank"
-          ><i class="fa-brands fa-instagram"></i
-        ></a>
+        <a href="https://github.com/yomi-digital/walletconnect-vue-boilerplate" target="_blank" class="mr-3"><i
+            class="fa-brands fa-github"></i></a>
+        <a href="https://twitter.com/YOMI_WEB3" target="_blank" class="mr-3"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://discord.gg/w54Jbd4Qhz" target="_blank" class="mr-3"><i class="fa-brands fa-discord"></i></a>
+        <a href="https://www.linkedin.com/company/yomidigitalhub/" target="_blank" class="mr-3"><i
+            class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/yomi_web3/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { configureChains, createClient } from "@wagmi/core";
+import { configureChains, createClient, watchAccount } from "@wagmi/core";
 import { goerli, mainnet } from "@wagmi/core/chains";
 import { Web3Modal } from "@web3modal/html";
 
@@ -69,6 +52,8 @@ export default {
   data() {
     return {
       web3modal: {},
+      web3client: {},
+      account: ""
     };
   },
   mounted() {
@@ -86,18 +71,30 @@ export default {
       provider,
     });
     // Web3Modal and Ethereum Client
-    const ethereumClient = new EthereumClient(wagmiClient, chains);
+    app.web3client = new EthereumClient(wagmiClient, chains);
     app.web3modal = new Web3Modal(
       { projectId: "b93437f2799c397d5341d029cc7bbc48" },
-      ethereumClient
+      app.web3client
     );
+    app.connect()
   },
   methods: {
+    async openModal() {
+      const app = this;
+      app.web3modal.openModal();
+    },
     async connect() {
       const app = this;
-      console.log("try init connect");
-      app.web3modal.openModal();
-      console.log("iter finish");
+      console.log("Try background connection");
+      const account = app.web3client.getAccount()
+      console.log("Account:", account)
+      app.account = account.address
+      watchAccount((connected) => {
+        console.log("New account connected:", connected)
+        const account = app.web3client.getAccount()
+        console.log(account.address)
+        app.account = account.address
+      });
     },
   },
 };
@@ -120,6 +117,7 @@ h3 {
 }
 
 @media (min-width: 1024px) {
+
   .greetings h1,
   .greetings h3 {
     display: block;
