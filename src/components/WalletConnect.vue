@@ -1,6 +1,5 @@
 <template>
   <div class="greetings">
-    <h1 class="green mt-5">Wallet Connect Guide</h1>
     <h3 class="mt-4">
       This is a guide to integrate WalletConnect 2.0 into a Vue JS project, you
       can found open source code
@@ -25,50 +24,17 @@
       </b-button>
       <div
         v-if="account !== undefined && account"
-        class="has-text-left box-account mt-6"
+        class="has-text-left box-account mix-gradient mt-6"
       >
         <div class="is-flex is-align-items-center">
-          <h4 class="mr-2">
-            <i class="color-success fa-sharp fa-solid fa-circle-check"></i>
-          </h4>
-          <h4 class="color-dark">CONNECTED</h4>
+          <p class="mr-2 is-medium">
+            <i class="color-white fa-sharp fa-solid fa-circle-check"></i>
+          </p>
+          <p class="color-white is-medium">CONNECTED</p>
         </div>
-        <h4 class="color-dark mt-3">
+        <p class="color-white is-medium mt-3">
           {{ account.substr(0, 6) + "..." + account.substr(-6) }}
-        </h4>
-      </div>
-    </div>
-    <div class="has-text-centered">
-      <p class="mt-6">
-        Developed with ♥︎ by
-        <a href="https://yomi.digital" target="blank">YOMI</a>
-      </p>
-      <p>
-        Wallet Connect -
-        <a href="https://docs.walletconnect.com/2.0/" target="blank">docs</a>
-      </p>
-      <div class="mt-4 is-flex is-align-items-center is-justify-content-center">
-        <a
-          href="https://github.com/yomi-digital/walletconnect-vue-boilerplate"
-          target="_blank"
-          class="mr-3"
-          ><i class="fa-brands fa-github"></i
-        ></a>
-        <a href="https://twitter.com/YOMI_WEB3" target="_blank" class="mr-3"
-          ><i class="fa-brands fa-twitter"></i
-        ></a>
-        <a href="https://discord.gg/w54Jbd4Qhz" target="_blank" class="mr-3"
-          ><i class="fa-brands fa-discord"></i
-        ></a>
-        <a
-          href="https://www.linkedin.com/company/yomidigitalhub/"
-          target="_blank"
-          class="mr-3"
-          ><i class="fa-brands fa-linkedin"></i
-        ></a>
-        <a href="https://www.instagram.com/yomi_web3/" target="_blank"
-          ><i class="fa-brands fa-instagram"></i
-        ></a>
+        </p>
       </div>
     </div>
   </div>
